@@ -19,7 +19,7 @@ WORKER_COUNT=$(oc get node -l node-role.kubernetes.io/worker,node-role.kubernete
 JOB_ITERATIONS=$((WORKER_COUNT * 9))
 INGRESS_DOMAIN=$(oc get ingresscontroller -n openshift-ingress-operator default -o jsonpath="{.status.domain}")
 
-export PROMETHEUS_HOST PROMETHEUS_ISTIO_HOST PROMETHEUS_ISTIO_PASSWORD PROMETHEUS_PASSWORD TOKEN INGRESS_DOMAIN JOB_ITERATIONS
+export PROMETHEUS_HOST PROMETHEUS_ISTIO_HOST PROMETHEUS_ISTIO_PASSWORD PROMETHEUS_PASSWORD TOKEN INGRESS_DOMAIN JOB_ITERATIONS ES_SERVER ES_INDEX
 
 if [[ ! -f /tmp/kube-burner-ocp ]]; then
    curl --fail --retry 8 --retry-all-errors -sS -L "${KUBE_BURNER_URL}" | tar -xzC "${KUBE_DIR}/" kube-burner-ocp

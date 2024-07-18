@@ -13,7 +13,7 @@
   username: internal
   password: {{.PROMETHEUS_ISTIO_PASSWORD}}
   metrics:
-    - metrics.yml
+    - istio-metrics.yml
   indexer:
     esServers: ["{{.ES_SERVER}}"]
     insecureSkipVerify: true
