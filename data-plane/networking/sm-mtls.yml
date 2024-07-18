@@ -53,51 +53,25 @@ tests:
   messagesize: 8192
   service: True
 
-# UDP
-
-- UDPStreamServiceSmall:
-  parallelism: 1
-  profile: "UDP_STREAM"
+- TCPStreamServiceSmall4:
+  parallelism: 4
+  profile: "TCP_STREAM"
   duration: 30
   samples: 2
   messagesize: 64
   service: True
 
-- UDPStreamServiceMed:
-  parallelism: 1
-  profile: "UDP_STREAM"
+- TCPStreamServiceMed4:
+  parallelism: 4
+  profile: "TCP_STREAM"
   duration: 30
   samples: 2
   messagesize: 1024
   service: True
 
-- UDPStreamServiceLarge:
-  parallelism: 1
-  profile: "UDP_STREAM"
-  duration: 30
-  samples: 2
-  messagesize: 8192
-  service: True
-
-- UDPStreamServiceSmall2:
-  parallelism: 2
-  profile: "UDP_STREAM"
-  duration: 30
-  samples: 2
-  messagesize: 64
-  service: True
-
-- UDPStreamServiceMed2:
-  parallelism: 2
-  profile: "UDP_STREAM"
-  duration: 30
-  samples: 2
-  messagesize: 1024
-  service: True
-
-- UDPStreamServiceLarge2:
-  parallelism: 2
-  profile: "UDP_STREAM"
+- TCPStreamServiceLarge4:
+  parallelism: 4
+  profile: "TCP_STREAM"
   duration: 30
   samples: 2
   messagesize: 8192
@@ -113,9 +87,17 @@ tests:
   messagesize: 1024
   service: true
 
-- RRService-UDP:
-  parallelism: 1
-  profile: "UDP_RR"
+- RRService-TCP2:
+  parallelism: 2
+  profile: "TCP_RR"
+  duration: 30
+  samples: 2
+  messagesize: 1024
+  service: true
+
+- RRService-TCP4:
+  parallelism: 4
+  profile: "TCP_RR"
   duration: 30
   samples: 2
   messagesize: 1024

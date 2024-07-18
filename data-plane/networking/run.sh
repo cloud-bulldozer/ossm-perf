@@ -1,4 +1,4 @@
-NETPERF_VERSION=0.1.22
+NETPERF_VERSION=0.1.24
 SIDECAR=${SIDECAR:?}
 curl -sSL https://github.com/cloud-bulldozer/k8s-netperf/releases/download/v${NETPERF_VERSION}/k8s-netperf_Linux_v${NETPERF_VERSION}_x86_64.tar.gz | tar xzf - k8s-netperf
 oc create ns netperf 2>/dev/null
