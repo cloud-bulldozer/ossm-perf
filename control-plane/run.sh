@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-KUBE_BURNER_VERSION=1.3.0
+KUBE_BURNER_VERSION=1.3.3
 KUBE_DIR=${KUBE_DIR:-/tmp}
 KUBE_BURNER_URL="https://github.com/kube-burner/kube-burner-ocp/releases/download/v${KUBE_BURNER_VERSION}/kube-burner-ocp-V${KUBE_BURNER_VERSION}-linux-x86_64.tar.gz"
 PROMETHEUS_HOST=https://$(oc get route -n openshift-monitoring prometheus-k8s -o go-template="{{.spec.host}}")
