@@ -9,7 +9,6 @@ KUBE_BURNER_URL="https://github.com/kube-burner/kube-burner-ocp/releases/downloa
 PROMETHEUS_HOST=https://$(oc get route -n openshift-monitoring prometheus-k8s -o go-template="{{.spec.host}}")
 PROMETHEUS_ISTIO_HOST=https://$(oc get route -n istio-system prometheus -o go-template="{{.spec.host}}")
 PROMETHEUS_ISTIO_PASSWORD=$(oc get secret/htpasswd -n istio-system -o go-template="{{.data.rawPassword|base64decode}}")
-ES_SERVER=${ES_SERVER=https://search-perfscale-dev-chmf5l4sh66lvxbnadi4bznl3a.us-west-2.es.amazonaws.com}
 ES_INDEX=${ES_INDEX:-kube-burner}
 TOKEN=$(oc sa new-token -n openshift-monitoring prometheus-k8s)
 WORKLOAD=${WORKLOAD:?}
