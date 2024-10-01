@@ -10,6 +10,7 @@ PROMETHEUS_HOST=https://$(oc get route -n openshift-monitoring prometheus-k8s -o
 PROMETHEUS_ISTIO_HOST=https://$(oc get route -n istio-system prometheus -o go-template="{{.spec.host}}")
 PROMETHEUS_ISTIO_PASSWORD=$(oc get secret/htpasswd -n istio-system -o go-template="{{.data.rawPassword|base64decode}}")
 ES_INDEX=${ES_INDEX:-kube-burner}
+ES_SERVER=${ES_SERVER:-http://es-instance.com:9200}
 TOKEN=$(oc sa new-token -n openshift-monitoring prometheus-k8s)
 WORKLOAD=${WORKLOAD:?}
 EXTRA_FLAGS=${EXTRA_FLAGS:-}
