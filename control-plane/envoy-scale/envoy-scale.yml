@@ -16,6 +16,9 @@ jobs:
     objects:
       - objectTemplate: namespace.yml
         replicas: 1
+        inputVars:
+          mesh_mode: {{.MESH_MODE}}
+          waypoint: {{.WAYPOINT}}
 
   - name: rps-10k
     namespace: envoy-scale
@@ -41,11 +44,18 @@ jobs:
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
 
       - objectTemplate: client.yml
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
+
+{{ if .WAYPOINT }}
+      - objectTemplate: waypoint.yml
+        replicas: 1
+{{ end }}
 
       - objectTemplate: virtualservice.yml
         replicas: 1
@@ -81,11 +91,18 @@ jobs:
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
 
       - objectTemplate: client.yml
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
+
+{{ if .WAYPOINT }}
+      - objectTemplate: waypoint.yml
+        replicas: 1
+{{ end }}
 
       - objectTemplate: virtualservice.yml
         replicas: 1
@@ -121,11 +138,18 @@ jobs:
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
 
       - objectTemplate: client.yml
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
+
+{{ if .WAYPOINT }}
+      - objectTemplate: waypoint.yml
+        replicas: 1
+{{ end }}
 
       - objectTemplate: virtualservice.yml
         replicas: 1
@@ -161,11 +185,18 @@ jobs:
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
 
       - objectTemplate: client.yml
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
+
+{{ if .WAYPOINT }}
+      - objectTemplate: waypoint.yml
+        replicas: 1
+{{ end }}
 
       - objectTemplate: virtualservice.yml
         replicas: 1
@@ -202,11 +233,18 @@ jobs:
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
 
       - objectTemplate: client.yml
         replicas: 1
         inputVars:
           podReplicas: 100
+          mesh_mode: {{.MESH_MODE}}
+
+{{ if .WAYPOINT }}
+      - objectTemplate: waypoint.yml
+        replicas: 1
+{{ end }}
 
       - objectTemplate: virtualservice.yml
         replicas: 1

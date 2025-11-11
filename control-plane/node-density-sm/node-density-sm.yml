@@ -21,6 +21,8 @@ jobs:
     objects:
       - objectTemplate: namespace.yml
         replicas: 1
+        inputVars:
+          mesh_mode: {{.MESH_MODE}}
 
   - name: node-density-sm
     namespace: node-density-sm
@@ -34,8 +36,8 @@ jobs:
     preLoadImages: true
     preLoadPeriod: 10s
     objects:
-
       - objectTemplate: pod.yml
         replicas: 1
         inputVars:
           containerImage: registry.k8s.io/pause:3.1
+          mesh_mode: {{.MESH_MODE}}

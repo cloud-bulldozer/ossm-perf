@@ -8,4 +8,9 @@ metadata:
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/audit: privileged
     pod-security.kubernetes.io/warn: privileged
+{{ if eq .mesh_mode "sidecar" }}
     istio-injection: enabled
+{{ end }}
+{{ if eq .mesh_mode "ambient" }}
+    istio.io/dataplane-mode: ambient
+{{ end }}

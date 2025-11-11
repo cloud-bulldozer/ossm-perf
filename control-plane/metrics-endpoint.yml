@@ -9,13 +9,3 @@
     insecureSkipVerify: true
     defaultIndex: {{.ES_INDEX}}
     type: opensearch
-- endpoint: {{.PROMETHEUS_ISTIO_HOST}}
-  username: internal
-  password: {{.PROMETHEUS_ISTIO_PASSWORD}}
-  metrics:
-    - istio-metrics.yml
-  indexer:
-    esServers: ["{{.ES_SERVER}}"]
-    insecureSkipVerify: true
-    defaultIndex: {{.ES_INDEX}}
-    type: opensearch

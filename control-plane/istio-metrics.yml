@@ -1,7 +1,0 @@
-# API server
-
-- query: sum(rate(istio_requests_total{reporter="source"}[2m])) by (response_code, request_protocol) > 0
-  metricName: requests-rate
-
-- query: histogram_quantile(0.99, sum(rate(istio_request_duration_milliseconds_bucket{reporter="destination", kubernetes_namespace!="istio-system"}[2m])) by (le, request_protocol, connection_security_policy)) / 1000
-  metricName: incoming-request-latency

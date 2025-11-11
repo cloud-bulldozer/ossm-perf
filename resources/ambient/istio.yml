@@ -1,0 +1,36 @@
+apiVersion: sailoperator.io/v1
+kind: Istio
+metadata:
+  name: default
+spec:
+  namespace: istio-system
+  updateStrategy:
+    type: InPlace
+    inactiveRevisionDeletionGracePeriodSeconds: 30
+  version: v1.26.4
+  profile: ambient
+  values:
+    global:
+      waypoint:
+        resources:
+          limits:
+            memory: 2Gi
+            cpu: 4
+          requests:
+            memory: 2Gi
+            cpu: 100m
+    meshConfig:
+      enableAutoMtls: true
+    pilot:
+      nodeSelector:
+        node-role.kubernetes.io/infra: ""
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/infra
+          operator: Exists
+        - effect: NoExecute
+          key: node-role.kubernetes.io/infra
+          operator: Exists
+      autoscaleEnabled: false
+      replicaCount: 2
+      trustedZtunnelNamespace: ztunnel

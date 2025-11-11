@@ -4,4 +4,12 @@ kind: Namespace
 metadata:
   name: {{.JobName}}-{{.Iteration}}
   labels:
+{{ if eq .mesh_mode "sidecar" }}
     istio-injection: enabled
+{{ end }}
+{{ if eq .mesh_mode "ambient" }}
+    istio.io/dataplane-mode: ambient
+{{ end }}
+{{ if .waypoint | default false }}
+    istio.io/use-waypoint: waypoint
+{{ end }}

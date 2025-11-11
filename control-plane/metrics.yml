@@ -65,6 +65,24 @@
 - query: sum(container_memory_working_set_bytes{name!="",container!="POD",namespace="istio-system"}) by (pod)
   metricName: istio-system-memory
 
+- query: sum(irate(container_cpu_usage_seconds_total{name!="",container!="POD",namespace=~"istio-cni"}[2m]) * 100) by (pod) > 0
+  metricName: istio-cni-cpu
+
+- query: sum(container_memory_working_set_bytes{name!="",container!="POD",namespace="istio-cni"}) by (pod)
+  metricName: istio-cni-memory
+
+- query: sum(irate(container_cpu_usage_seconds_total{name!="",container!="POD",namespace=~"ztunnel"}[2m]) * 100) by (pod) > 0
+  metricName: ztunnel-cpu
+
+- query: sum(container_memory_working_set_bytes{name!="",container!="POD",namespace="ztunnel"}) by (pod)
+  metricName: ztunnel-memory
+
+- query: sum(irate(container_cpu_usage_seconds_total{name!="",container!="POD",pod=~"waypoint.+"}[2m]) * 100) by (pod) > 0
+  metricName: waypoint-cpu
+
+- query: sum(container_memory_working_set_bytes{name!="",container!="POD",pod=~"waypoint.+"}) by (pod)
+  metricName: waypoint-memory
+
 - query: sum(irate(container_cpu_usage_seconds_total{container="istio-proxy", namespace!="istio-system"}[2m]) * 100) > 0
   metricName: istio-proxy-cpu
 

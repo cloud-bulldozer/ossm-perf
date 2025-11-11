@@ -2,7 +2,9 @@ kind: Pod
 apiVersion: v1
 metadata:
   annotations:
+{{ if eq .mesh_mode "sidecar" }}
     sidecar.istio.io/inject: "true"
+{{ end }}
   labels:
     name: sm-node-density-{{.Iteration}}
     app: pause

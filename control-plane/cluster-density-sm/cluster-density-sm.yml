@@ -17,6 +17,9 @@ jobs:
     objects:
       - objectTemplate: namespace.yml
         replicas: 1
+        inputVars:
+          mesh_mode: {{.MESH_MODE}}
+          waypoint: {{.WAYPOINT}}
 
   - name: cluster-density-sm
     namespace: cluster-density-sm
@@ -53,14 +56,21 @@ jobs:
         inputVars:
           ingressDomain: {{.INGRESS_DOMAIN}}
 
+{{ if .WAYPOINT }}
+      - objectTemplate: waypoint.yml
+        replicas: 1
+{{ end }}
+
       - objectTemplate: deployment-server.yml
         replicas: 2
         inputVars:
           podReplicas: 2
+          mesh_mode: {{.MESH_MODE}}
 
       - objectTemplate: deployment-client.yml
         replicas: 2
         inputVars:
           podReplicas: 2
           ingressDomain: {{.INGRESS_DOMAIN}}
+          mesh_mode: {{.MESH_MODE}}
 

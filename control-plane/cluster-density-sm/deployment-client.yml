@@ -10,7 +10,9 @@ spec:
   template:
     metadata:
       annotations:
+{{ if eq .mesh_mode "sidecar" }}
         sidecar.istio.io/inject: "true"
+{{ end }}
       labels:
         name: client-{{.Replica}}
         app: client

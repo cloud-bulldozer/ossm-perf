@@ -84,11 +84,11 @@ tests:
   profile: "TCP_RR"
   duration: 30
   samples: 2
-  messagesize: 1024
+  messagesize: 64
   service: true
 
 - RRService-TCP2:
-  parallelism: 2
+  parallelism: 1
   profile: "TCP_RR"
   duration: 30
   samples: 2
@@ -96,9 +96,9 @@ tests:
   service: true
 
 - RRService-TCP4:
-  parallelism: 4
+  parallelism: 1
   profile: "TCP_RR"
   duration: 30
   samples: 2
-  messagesize: 1024
+  messagesize: 8192
   service: true
